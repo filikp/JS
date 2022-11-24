@@ -13,23 +13,16 @@
         let todo3 = 'Make dinner';
         let button = 'Click Me';
 
-        let element = document.createElement('div');
-        element.innerText = todo1;
-        document.body.appendChild(element);
+        function addTodo(todoTitle)
+        {
+            let element = document.createElement('div');
+            element.innerText = todoTitle;
+            document.body.appendChild(element);
+        }
 
-        element = document.createElement('div');
-        element.innerText = todo2;
-        document.body.appendChild(element);
-
-        element = document.createElement('div');
-        element.innerText = todo3;
-        document.body.appendChild(element);
-
-        let button_element = document.createElement('button');
-        button_element.innerText = button;
-        document.body.appendChild(button_element);
-
-        document.title = 'Js Change title'
+        addTodo(todo1);
+        addTodo(todo2);
+        addTodo(todo3);
     </script>
 </body>
 </html>
