@@ -8,47 +8,15 @@
 </head>
 <body>
     <script>
-        let todo1 = 'Get groceries';
-        let todo2 = 'Wash car';
-        let todo3 = 'Make dinner';
-        let button = 'Click Me';
-
-        function addTodo(todoTitle)
-        {
+        let todos = ['Get groceries', 'Wash car', 'Make dinner'];
+        todos.push('another todo'); 
+        todos.pop();
+        
+        todos.forEach(function (todoTitle) {
             let element = document.createElement('div');
             element.innerText = todoTitle;
             document.body.appendChild(element);
-        }
-
-        addTodo(todo1);
-        addTodo(todo2);
-        addTodo(todo3);
-
-        function greeting(firstName)
-        {
-            console.log('Hello ' + firstName);
-        }
-
-        greeting('Filip');
-
-        function toUpper(str)
-        {
-            addTodo(str.toUpperCase());
-        }
-
-        toUpper('Filip');
-
-        function length(inches)
-        {
-            if(inches == 1)
-            {
-                addTodo(inches + ' inch = ' + inches*2.54 + ' cm');
-            }else{
-                addTodo(inches + ' inches = ' + inches*2.54 + ' cm');
-            }
-        }
-
-        length(2);
+        });
     </script>
 </body>
 </html>
