@@ -10,13 +10,43 @@
     <script>
         let todos = ['Get groceries', 'Wash car', 'Make dinner'];
         todos.push('another todo'); 
-        todos.pop();
         
-        todos.forEach(function (todoTitle) {
+        todos.forEach(function (todoTitle){
             let element = document.createElement('div');
             element.innerText = todoTitle;
             document.body.appendChild(element);
         });
+
+        let upper = ['hello', 'world'];
+
+        upper.forEach(function (upperWord){
+            let element = document.createElement('div');
+            element.innerText = upperWord.toUpperCase();
+            document.body.appendChild(element);
+        });
+
+        function arrayDouble(stringArr){
+            let result = [];
+            stringArr.forEach(function (str){
+                result.push(str);
+                result.push(str);
+            });
+            console.log(result);
+        }
+
+        arrayDouble(upper);
+
+        function arraySum(number){
+            let total = 0;
+            number.forEach(function (num){
+                total = total + num;
+            });
+
+            console.log(total);
+        };
+
+        arraySum([1,2,23,4,5]);
+
     </script>
 </body>
 </html>
