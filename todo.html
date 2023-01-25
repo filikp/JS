@@ -7,45 +7,34 @@
     <title>JavaScript practice</title>
 </head>
 <body>
+    <input id="todo-title" type="text" />
+    <button onclick="addTodo()">Add todo</button>
+
+    <div id="todo-list"></div>
+
     <script>
         let todos = ['Get groceries', 'Wash car', 'Make dinner'];
-        todos.push('another todo'); 
         
-        todos.forEach(function (todoTitle){
-            let element = document.createElement('div');
-            element.innerText = todoTitle;
-            document.body.appendChild(element);
-        });
+        render();
 
-        let upper = ['hello', 'world'];
+        function addTodo() {
+            const textbox = document.getElementById('todo-title');
+            const title = textbox.value;
+            todos.push(title);
 
-        upper.forEach(function (upperWord){
-            let element = document.createElement('div');
-            element.innerText = upperWord.toUpperCase();
-            document.body.appendChild(element);
-        });
-
-        function arrayDouble(stringArr){
-            let result = [];
-            stringArr.forEach(function (str){
-                result.push(str);
-                result.push(str);
-            });
-            console.log(result);
+            render();
         }
 
-        arrayDouble(upper);
-
-        function arraySum(number){
-            let total = 0;
-            number.forEach(function (num){
-                total = total + num;
+        function render(){
+            // reset our list
+            document.getElementById('todo-list').innerHTML = '';
+            todos.forEach(function (todoTitle){
+            const element = document.createElement('div');
+            element.innerText = todoTitle;
+            const todoList = document.getElementById('todo-list');
+            todoList.appendChild(element);
             });
-
-            console.log(total);
-        };
-
-        arraySum([1,2,23,4,5]);
+        }
 
     </script>
 </body>
