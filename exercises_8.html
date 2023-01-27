@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises 8</title>
+</head>
+<body>
+    <h1>Excercise 8</h1>
+    <div id="doneReset">
+        <button id="todo-button" onclick="pushDone();">Press</button>
+    </div>
+    
+
+    <div id="counter">0</div>
+    <button  onclick="up();">Up</button>
+    <button  onclick="down();">Down</button>
+    <button  onclick="resetButton();">Reset to 0</button>
+    
+    <script>
+        function pushDone(){
+            let todoButton = document.getElementById('todo-button');
+
+            if(todoButton.innerText == 'Press'){
+                let buttonReset = document.createElement('button');
+                buttonReset.id = 'reset';
+                buttonReset.onclick = function(){
+                    let button = document.getElementById('reset');
+                    document.body.removeChild(button);
+                    todoButton.innerText = 'Press';
+                };
+                buttonReset.innerText = 'Reset';
+                let divID = document.getElementById('doneReset')
+                document.body.appendChild(buttonReset);
+                todoButton.innerText = 'Done';
+            }
+        }
+
+        
+        let downButton = document.getElementById('down');
+
+        let num = 0;
+
+        function up(){
+            num = num+1;
+            let counter = document.getElementById('counter');
+            counter.innerText = num;
+        }
+
+        function down(){
+            num = num-1;
+            let counter = document.getElementById('counter');
+            counter.innerText = num;
+        }
+
+        function resetButton(){
+            let counter = document.getElementById('counter');
+            counter.innerText = 0;
+            num = 0;
+        }
+
+    </script>
+</body>
+
+</html>
