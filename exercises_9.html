@@ -31,6 +31,7 @@
         function addToCart(food){
             cart.push(food);
             render();
+
             if(cart.length == 1){
                 const clearButton = document.createElement('button');
                 const cartDiv = document.getElementById('cart');
@@ -44,18 +45,27 @@
             }
         }
 
-        function clearCart(){
-            cart.length = 0;
-
-            render();
-        }
-
         function render(){
-                document.getElementById('food-list').innerHTML = '';
-                cart.forEach(function (food){
+            let sumApple = 0;
+            let sumTomato = 0;
+            let sumEggs = 0;
+            document.getElementById('food-list').innerHTML = '';
+            cart.forEach(function (food){
+            //     switch(food){
+            //         case 'Apple':
+            //             sumApple = sumApple + 1;
+            //         break;
+            //         case 'Tomato':
+            //             sumTomato = sumTomato + 1;
+            //         break;
+            //         case 'Eggs':
+            //             sumEggs = sumEggs + 1;
+            //         break;
+            //     }
                 const element = document.createElement('div');
                 element.innerText = food;
                 const foodList = document.getElementById('food-list');
+                //document.getElementById('food-list').innerHTML = '';
                 foodList.appendChild(element);
             });
         }
@@ -66,11 +76,13 @@
             document.getElementById('result').innerHTML = '';
             const value = measurement.value;
 
-            const convertedValue = +value * 2.54;
+            const convertedValue = Math.round((+value * 2.54) * 100) / 100;
 
             const result = document.createElement('div');
             result.innerText = convertedValue;
-            document.body.appendChild(result);
+            const convertDiv = document.getElementById('result');
+            result.innerText = result.innerText + ' cm';
+            convertDiv.appendChild(result);
         }
         
         function convertToInch(){
@@ -80,7 +92,9 @@
 
             const result = document.createElement('div');
             result.innerText = convertedValue;
-            document.body.appendChild(result);
+            const convertDiv = document.getElementById('result');
+            result.innerText = result.innerText + ' inch';
+            convertDiv.appendChild(result);
         }
     </script>
 </body>
