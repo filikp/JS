@@ -9,10 +9,10 @@
 <body>
     <h1>Excercise 8</h1>
     <div id="doneReset">
+        <p>1)</p>
         <button id="todo-button" onclick="pushDone();">Press</button>
     </div>
     
-
     <div id="counter">0</div>
     <button  onclick="up();">Up</button>
     <button  onclick="down();">Down</button>
@@ -26,18 +26,20 @@
             let todoButton = document.getElementById('todo-button');
 
             if(todoButton.innerText == 'Press'){
-                let buttonReset = document.createElement('button');
-                buttonReset.id = 'reset';
+                const doneReset = document.getElementById('doneReset');
+                const buttonReset = document.createElement('button');
+                buttonReset.id = 'resetButton';
+                buttonReset.innerText = 'Reset';
                 buttonReset.onclick = function(){
-                    let button = document.getElementById('reset');
-                    document.body.removeChild(button);
+                    doneReset.removeChild(buttonReset);
                     todoButton.innerText = 'Press';
                 };
-                buttonReset.innerText = 'Reset';
-                let divID = document.getElementById('doneReset')
-                document.body.appendChild(buttonReset);
+                doneReset.appendChild(buttonReset);
                 todoButton.innerText = 'Done';
             }
+
+            const resetButton = document.getElementById('resetButton');
+
         }
 
         
