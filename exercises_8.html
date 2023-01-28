@@ -18,6 +18,9 @@
     <button  onclick="down();">Down</button>
     <button  onclick="resetButton();">Reset to 0</button>
     
+    <input id="createDiv" type="text" />
+    <button onclick="createDiv()">Novi div</button>
+    
     <script>
         function pushDone(){
             let todoButton = document.getElementById('todo-button');
@@ -58,6 +61,14 @@
             let counter = document.getElementById('counter');
             counter.innerText = 0;
             num = 0;
+        }
+
+        function createDiv(){
+            let divContent = document.getElementById('createDiv');
+            let inputValue = divContent.value;
+            let newDiv = document.createElement('div');
+            newDiv.innerText = inputValue;
+            document.body.appendChild(newDiv);
         }
 
     </script>
