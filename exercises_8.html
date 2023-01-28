@@ -12,14 +12,16 @@
         <p>1)</p>
         <button id="todo-button" onclick="pushDone();">Press</button>
     </div>
-    
+    <p>2)</p>
     <div id="counter">0</div>
     <button  onclick="up();">Up</button>
     <button  onclick="down();">Down</button>
     <button  onclick="resetButton();">Reset to 0</button>
-    
+    <p>3)</p>
     <input id="createDiv" type="text" />
-    <button onclick="createDiv()">Novi div</button>
+    <button onclick="createDiv();">Novi div</button>
+    <button onclick="clearDiv();">Clear</button>
+    <div id="divs"></div>
     
     <script>
         function pushDone(){
@@ -70,7 +72,14 @@
             let inputValue = divContent.value;
             let newDiv = document.createElement('div');
             newDiv.innerText = inputValue;
-            document.body.appendChild(newDiv);
+            newDiv.id = 'newDiv';
+            const divs = document.getElementById('divs');
+            divs.appendChild(newDiv);
+        }
+
+        function clearDiv(){
+            let elem = document.getElementById('divs');
+            elem.replaceChildren();
         }
 
     </script>
