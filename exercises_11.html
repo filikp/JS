@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises 11</title>
+</head>
+<body>
+    <div id="shoppingCart"></div>
+    <div id="totalPrice"></div>
+    <script>
+        let shoppingCart = document.getElementById('shoppingCart');
+
+        function createCart(items){
+            let total = 0;
+            let groceries = Object.keys(items);
+            groceries.forEach(element => {
+                const item = document.createElement('div');
+                item.innerText = element + ' $' + items[element] + ' ';
+                const addButton = document.createElement('button');
+                addButton.innerText = 'Add';
+                addButton.onclick = function () {
+                    const totalPrice = document.getElementById('totalPrice');
+                    totalPrice.innerHTML = '';
+                    total = total + items[element];
+                    totalPrice.innerText = total;
+                    shoppingCart.appendChild(totalPrice);
+                }
+                const substractButton = document.createElement('button');
+                substractButton.innerText = 'Substract';
+                substractButton.onclick = function () {
+                    const totalPrice = document.getElementById('totalPrice');
+                    totalPrice.innerHTML = '';
+                    total = total - items[element];
+                    totalPrice.innerText = total;
+                    shoppingCart.appendChild(totalPrice);
+                }
+                item.appendChild(addButton);
+                item.appendChild(substractButton);
+                shoppingCart.appendChild(item);
+            });
+        }
+
+        createCart({Apple: 3, Orange: 4, Eggs: 2});
+    </script>
+</body>
+</html>
