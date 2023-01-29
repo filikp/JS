@@ -7,7 +7,7 @@
     <title>Exercises 10</title>
 </head>
 <body> 
-    <div id="cartArray"></div>
+    <div id="receipt"></div>
 
     <script>
         let cartArray = [{
@@ -30,9 +30,28 @@
                 sum = sum + cart.price * cart.quantity;
             });
             console.log(sum);    
+            return sum;
         }
 
         cartTotal(cartArray);
+
+        const receipt = document.getElementById('receipt');
+
+        function displayReceipt(cartArray){
+            receipt.innerHTML = '';
+
+            cartArray.forEach(food => {
+                const receiptLine = document.createElement('div');
+                receiptLine.innerText = food.name + ' $' + food.quantity  + ' * ' + food.price + ' = $' + food.quantity*food.price; 
+                receipt.appendChild(receiptLine);
+            });
+
+            const receiptTotal = document.createElement('div');
+            receiptTotal.innerText = 'Cart total: $' + cartTotal(cartArray);
+            receipt.appendChild(receiptTotal);
+        }
+
+        displayReceipt(cartArray);
 
     </script>
 </body>
