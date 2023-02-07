@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises 12</title>
+</head>
+<body>
+    <h1>Exercises 12</h1>
+    <div id = 'upper'>
+        <p>1) Upper case</p>
+    </div>
+    <div id="aboveFreezing">
+        <p>2) Above Freezing</p>
+    </div>
+    <div id="removeRed">
+        <p>3) Remove Red</p>
+    </div>
+    <script>
+        function upper(string){
+            let upperString = string.toUpperCase();
+            // const upper = document.createElement('div');
+            // upper.innerText = upperString;
+            // const item = document.getElementById('upper');
+            // item.appendChild(upper);
+
+            render(upperString,'upper');
+        }
+
+        function aboveFreezing(temperature){
+            temperature = temperature.filter(function (temp){
+                if(temp > 0){
+                    return true;
+                } else{
+                    return false;
+                }
+            });
+
+            // const elem = document.createElement('div');
+            // elem.innerText = temperature;
+            // const item = document.getElementById('aboveFreezing');
+            // item.appendChild(elem);
+
+            render(temperature, 'aboveFreezing');
+        }
+
+        function removeRed(food){
+            food = food.filter(function (color){
+                if(color.color === 'red'){
+                    return false;
+                } else{
+                    return true;
+                }
+            })
+
+            food.forEach(element => {
+                let foods = 'food: ' + element.name + ', color: ' + element.color;
+                render(foods, 'removeRed');
+            });
+        }
+
+        function render(text, id){
+            const elem = document.createElement('div');
+            elem.innerText = text;
+            const item = document.getElementById(id);
+            item.appendChild(elem);
+        }
+
+
+        upper('Sir ima miris');
+        aboveFreezing([1,43,-22,-1,4,0,6,-6]);
+        removeRed([
+            {name: 'Apple', color: 'red'}, 
+            {name: 'Egg', color: 'white'},
+            {name: 'Banana', color: 'yellow'}
+        ]);
+    </script>
+</body>
+</html>
