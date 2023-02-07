@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises 13</title>
+</head>
+<body>
+    <h1>Exercises 13</h1>
+    <h3>1) Max number</h3>
+    <div id="max"></div>
+    <h3>2.1) Remove 2 apples from list ['cherry', 'apple', 'orange', 'apple', 'banana', 'apple', 'orange', 'apple']</h3>
+    <div id="pickApples"></div>
+    <h3>2.2) Remove 2 apples and 1 orange from list ['cherry', 'apple', 'orange', 'apple', 'banana', 'apple', 'orange', 'apple']</h3>
+    <div id="pickFruits"></div>
+    <h3>3) Removes last 2 apples from list ['cherry', 'apple', 'orange', 'apple', 'banana', 'apple', 'orange', 'apple']</h3>
+    <div id="pickLastApples"></div>
+
+    <script>
+        function max(list){
+            let max = Number.MIN_VALUE;
+            list.forEach(element => {
+                if(element > max){
+                    max = element;
+                }
+            });
+            const output = 'From list of numbers: ' + list + ', number ' + max + ' is highest';
+            render(output, 'max');
+        }
+
+        function pickApples(fruits, id){
+            let br = 0;
+            fruits = fruits.filter(function (fruit){
+                if(br === 2 && fruit === 'apple'){
+                    return true;
+                }else if(fruit === 'apple'){
+                    br++;
+                    return false
+                }else{
+                    return true;
+                }
+            })
+
+            if (id === 'pickLastApples'){
+                render(fruits.reverse(), id);
+            }else{
+                render(fruits, id);
+            }
+        }
+
+        function pickFruits(fruits){
+            let brA = 0;
+            let brO = 0;
+            fruits = fruits.filter(function (fruit){
+                if((brA === 2 && fruit === 'apple') || (brO === 1 && fruit === 'orange')){
+                    return true;
+                }else if(fruit === 'apple'){
+                    brA++;
+                    return false;
+                }else if(fruit === 'orange'){
+                    brO++;
+                }else{
+                    return true;
+                }
+            })
+
+            render(fruits, 'pickFruits');
+        }
+
+        function pickLastApples(fruits){
+            pickApples(fruits.reverse(), 'pickLastApples');
+        }
+
+
+        function render(text, id){
+            const elem = document.createElement('div');
+            elem.innerText = text;
+            const item = document.getElementById(id);
+            item.appendChild(elem);
+        }
+
+        max([1,2,7,-45,-54,43,6]);
+
+        pickApples(['cherry', 'apple', 'orange', 'apple', 'banana', 'apple', 'orange', 'apple'], 'pickApples');
+        pickFruits(['cherry', 'apple', 'orange', 'apple', 'banana', 'apple', 'orange', 'apple']);
+        pickLastApples(['cherry', 'apple', 'orange', 'apple', 'banana', 'apple', 'orange', 'apple']);
+    </script>
+</body>
+</html>
